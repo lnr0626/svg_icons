@@ -13,7 +13,8 @@ defmodule SvgIcons.MixProject do
       description: """
       A library for rendering inline svgs with Phoenix, Phoenix LiveView, and Surface.
       """,
-      source_url: "https://github.com/lnr0626/svg_icons.git"
+      source_url: "https://github.com/lnr0626/svg_icons.git",
+      package: package()
     ]
   end
 
