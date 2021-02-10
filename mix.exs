@@ -22,6 +22,7 @@ defmodule SvgIcons.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.5"},
+      {:jason, "~> 1.0"},
       {:surface, "~> 0.2", only: [:test]}
     ]
   end
