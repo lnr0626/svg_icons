@@ -1,8 +1,19 @@
 defmodule SvgIcons do
   @moduledoc """
-  This module is used to Handle creating modules for SVG icons using macros to insert the
-  icons at compile time. This allows using inline svgs without having to maintain the svgs
-  inline.
+  This module is used to handle creating modules for SVG icons. This allows using inline svgs without
+  having to maintain the svgs inline.
+
+  Examples:
+    defmodule HeroIcons do
+      use SvgIcons,
+        surface: false,
+        path: ["support/test-icons/optimized", {:variant, [:outline, :solid], "outline"}, :icon]
+    end
+
+    ...
+
+    > HeroIcons.svg({"outline", "chart-pie"}, class: "w-4 h-4")
+    {:safe, "<svg class="w-4 h-4" ...>...</svg>"}
   """
   defmacro __using__(opts) do
     path_parts = Keyword.get(opts, :path)
@@ -27,7 +38,7 @@ defmodule SvgIcons do
         unquote(if include_surface, do: define_surface_macro())
       end
 
-      defmacro svg(id, attrs \\ []) do
+      def svg(id, attrs \\ []) do
         {:safe, render_svg(id, attrs)}
       end
 
