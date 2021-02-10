@@ -1,13 +1,26 @@
 defmodule SvgIcons.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
   def project do
     [
       app: :svg_icons,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: """
+      A library for rendering inline svgs with Phoenix, Phoenix LiveView, and Surface.
+      """,
+      source_url: "https://github.com/lnr0626/svg_icons.git"
+    ]
+  end
+
+  defp package() do
+    [
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/lnr0626/svg_icons"}
     ]
   end
 
