@@ -35,11 +35,11 @@ defmodule SvgIcons do
       defp svgs(), do: @svgs
 
       with {:module, _} <- Code.ensure_compiled(Surface) do
-        unquote(if include_surface, do: define_surface_macro())
+        unquote(if include_surface, do: define_surface_macro(__CALLER__))
       end
 
       def svg(id, attrs \\ []) do
-        {:safe, render_svg(id, attrs)}
+        Phoenix.HTML.raw(render_svg(id, attrs))
       end
 
       def render_svg(id, attrs), do: SvgIcons.render_svg(svgs(), id, attrs)
@@ -57,14 +57,20 @@ defmodule SvgIcons do
     end
   end
 
-  def define_surface_macro() do
+  def define_surface_macro(caller) do
     quote do
       use Surface.MacroComponent
 
       for {name, _, _, default} <- @path_pattern do
-        quote do
-          prop(unquote({name, [], Elixir}), :string, default: unquote(default))
-        end
+        Surface.API.put_assign!(
+          __ENV__,
+          :prop,
+          name,
+          :string,
+          [default: default],
+          [default: default],
+          unquote(caller.line)
+        )
       end
 
       prop(id, :string)
