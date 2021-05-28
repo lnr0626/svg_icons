@@ -62,7 +62,7 @@ defmodule SvgIcons do
       use Surface.MacroComponent
 
       for {name, _, _, default} <- @path_pattern do
-        Surface.API.put_assign!(
+        Surface.API.put_assign(
           __ENV__,
           :prop,
           name,
