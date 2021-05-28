@@ -37,7 +37,8 @@ defmodule SvgIcons.MixProject do
     [
       {:phoenix, "~> 1.5"},
       {:jason, "~> 1.0"},
-      {:surface, "~> 0.4", only: [:test]}
+      {:surface, "~> 0.4", only: [:test]},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end
