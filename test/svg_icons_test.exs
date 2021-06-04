@@ -35,7 +35,7 @@ defmodule SvgIconsTest do
   test "creates surface specific methods" do
     html =
       render_surface do
-        ~H"""
+        ~F"""
         <#HeroIconWithSurface variant="outline" icon="adjustments" />
         """
       end
