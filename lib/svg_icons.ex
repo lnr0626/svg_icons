@@ -67,15 +67,15 @@ defmodule SvgIcons do
           :prop,
           name,
           :string,
-          [default: default],
-          [default: default],
+          [default: default, static: true],
+          [default: default, static: true],
           unquote(caller.line)
         )
       end
 
-      prop(id, :string)
-      prop(class, :string)
-      prop(opts, :keyword, default: [])
+      prop(id, :string, static: true)
+      prop(class, :string, static: true)
+      prop(opts, :keyword, default: [], static: true)
 
       def expand(attributes, _children, meta),
         do: SvgIcons.expand(__MODULE__, svgs(), attributes, meta, @path_pattern)
