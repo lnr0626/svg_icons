@@ -1,7 +1,7 @@
 defmodule SvgIcons.MixProject do
   use Mix.Project
 
-  @version "0.2.2"
+  @version "0.2.3"
 
   def project do
     [
@@ -35,7 +35,7 @@ defmodule SvgIcons.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:phoenix, "~> 1.5"},
+      {:phoenix, "~> 1.6"},
       {:jason, "~> 1.0"},
       {:surface, github: "surface-ui/surface", only: [:test]},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
